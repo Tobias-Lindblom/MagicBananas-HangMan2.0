@@ -17,7 +17,7 @@ const maxWrongGuesses = 4;
 const wordDisplay = document.querySelector("#word-display");
 const wrongLetters = document.querySelector("#wrong-letters");
 const result = document.querySelector("#result");
-const playAgainButton = document.querySelector("#play-again");
+const gameModal = document.querySelector(".game-modal")
 
 // Lista med gubbens delar i rätt ordning (för hänga gubbe)
 const hangmanParts = [
@@ -74,7 +74,7 @@ function handleGuess(letter) {
 
         // Kolla om spelaren har vunnit hehe (inga "" kvar)
         if (!correctGuesses.includes("")) {
-            showResult("Du vann, Grattis!😆"); // Visa vinstmeddelande
+            gameModal.querySelector("h4").innerText = ("Du vann, Grattis!😆"); // Visa vinstmeddelande
         }
         } 
 
@@ -90,11 +90,21 @@ function handleGuess(letter) {
 
         // Kolla om spelaren har förlorat (max antal fel gissningar uppnått)
         if (wrongGuesses.length === maxWrongGuesses) {
-            showResult(`Du förlorade!🙁 Ordet var: ${chosenWord}`);
+            gameModal.querySelector("h4").innerText = (`Du förlorade!🙁 Ordet var: ${chosenWord}`);
+            gameModal.classList.add("show")
         }
     }
 
 }
+
+//funktionen som tar hand om hur spelet slutar, win or lose
+const gameOver = (isVictory) => {
+    const modalText = isVictory ? `Du kom på de hemliga ordet:` : 'De rätta ordet var:'
+    gameModal.querySelector("h4").innerText = isVictory ? 'Grattis!' : 'Du misslyckades!'
+    gameModal.querySelector("p").innerHTML = `${modalText} <b> ${currentWord}</b>`
+    gameModal.classList.add("show")
+}
+
 
 // Lyssna på tangenttryckningar
 window.addEventListener("keydown", (event) => {
