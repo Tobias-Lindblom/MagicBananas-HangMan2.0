@@ -76,6 +76,7 @@ function handleGuess(letter) {
         // Kolla om spelaren har vunnit hehe (inga "" kvar)
         if (!correctGuesses.includes("")) {
             gameModal.querySelector("h4").innerText = ("Du vann, Grattis!😆"); // Visa vinstmeddelande
+            gameModal.classList.add("show")
         }
         } 
 
