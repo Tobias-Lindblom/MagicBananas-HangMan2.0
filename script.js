@@ -60,3 +60,37 @@ function resetGame() {
     // Rensa fel  bokstäver
     wrongLetters.textContent = "";
 }
+
+// Funktion för att hantera gissningar
+function handleGuess(letter) {
+    if (chosenWord.includes(letter)) {
+        // Om bokstaven finns i det valda ordet (rätt gissning)
+        for (let i = 0; i < chosenWord.length; i++) {
+            if (chosenWord[i] === letter) {
+                correctGuesses[i] = letter;
+            }
+        }
+        updateWordDisplay(); 
+
+        // Kolla om spelaren har vunnit hehe (inga "" kvar)
+        if (!correctGuesses.includes("")) {
+            showResult("Du vann, Grattis!😆"); // Visa vinstmeddelande
+        }
+        } 
+
+        else {
+        // Om bokstaven inte finns i ordet (fel gissning)
+        wrongGuesses.push(letter); 
+        wrongLetters.textContent = wrongGuesses.join(", "); 
+
+        // Visa en ny del av gubben vid varje felgissning
+        if (wrongGuesses.length <= hangmanParts.length) {
+            hangmanParts[wrongGuesses.length - 1].style.display = "block"; 
+        }
+
+        // Kolla om spelaren har förlorat (max antal fel gissningar uppnått)
+        if (wrongGuesses.length === maxWrongGuesses) {
+            showResult(Du förlorade!🙁 Ordet var: ${chosenWord});
+        }
+    }
+}
