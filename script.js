@@ -26,3 +26,37 @@ const hangmanParts = [
     document.querySelector("#arms"),
     document.querySelector("#legs")
 ];
+
+// Funktion för att uppdatera visningen av det valda ordet
+function updateWordDisplay() {
+    wordDisplay.textContent = correctGuesses.join(" "); 
+}
+
+// Funktion för att visa resultatet och knappen för att spela igen
+function showResult(message) {
+    result.textContent = message; 
+    playAgainButton.style.display = "block"; 
+}
+
+// Funktion för att återställa spelet till sina ursprungliga värden
+function resetGame() {
+    // Välj ett nytt slumpmässigt ord
+    chosenWord = wordList[Math.floor(Math.random() * wordList.length)].toUpperCase();
+
+    // Återställ gissningarna
+    correctGuesses = Array(chosenWord.length).fill("_");
+    wrongGuesses = [];
+
+    // Rensa resultat och dölja knappen för att spela igen
+    result.textContent = "";
+    playAgainButton.style.display = "none";
+
+    // Dölj gubbens delar
+    hangmanParts.forEach(part => part.style.display = "none");
+
+
+    updateWordDisplay();
+
+    // Rensa fel  bokstäver
+    wrongLetters.textContent = "";
+}
