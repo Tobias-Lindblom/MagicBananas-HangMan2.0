@@ -18,13 +18,14 @@ const wordDisplay = document.querySelector("#word-display");
 const wrongLetters = document.querySelector("#wrong-letters");
 const result = document.querySelector("#result");
 const gameModal = document.querySelector(".game-modal")
+const playAgainButton = document.querySelector("#play-again");
 
 // Lista med gubbens delar i rätt ordning (för hänga gubbe)
 const hangmanParts = [
     document.querySelector("#head"),
     document.querySelector("#body"),
     document.querySelector("#arms"),
-    document.querySelector("#legs")
+    document.querySelector("#legs"),
 ];
 
 // Funktion för att uppdatera visningen av det valda ordet
@@ -96,15 +97,6 @@ function handleGuess(letter) {
     }
 
 }
-
-//funktionen som tar hand om hur spelet slutar, win or lose
-const gameOver = (isVictory) => {
-    const modalText = isVictory ? `Du kom på de hemliga ordet:` : 'De rätta ordet var:'
-    gameModal.querySelector("h4").innerText = isVictory ? 'Grattis!' : 'Du misslyckades!'
-    gameModal.querySelector("p").innerHTML = `${modalText} <b> ${currentWord}</b>`
-    gameModal.classList.add("show")
-}
-
 
 // Lyssna på tangenttryckningar
 window.addEventListener("keydown", (event) => {
