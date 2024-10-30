@@ -108,3 +108,12 @@ window.addEventListener("keydown", (event) => {
         handleGuess(letter);
     }
 });
+
+// Återställ spelet vid klick på "Spela igen"
+playAgainButton.addEventListener("click", () => {
+    resetGame(); // Återställ spelet
+    updateWordDisplay(); // Uppdatera ordvisningen
+});
+
+resetGame(); 
+updateWordDisplay();
