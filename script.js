@@ -90,7 +90,21 @@ function handleGuess(letter) {
 
         // Kolla om spelaren har förlorat (max antal fel gissningar uppnått)
         if (wrongGuesses.length === maxWrongGuesses) {
-            showResult(Du förlorade!🙁 Ordet var: ${chosenWord});
+            showResult(`Du förlorade!🙁 Ordet var: ${chosenWord}`);
         }
     }
+
 }
+
+// Lyssna på tangenttryckningar
+window.addEventListener("keydown", (event) => {
+    const letter = event.key.toUpperCase(); 
+    const isLetter = letter.match(/[A-Z]/); 
+    const isNotAlreadyGuessed = !correctGuesses.includes(letter); 
+    const hasNotLost = wrongGuesses.length < maxWrongGuesses; 
+
+    // Om allt är sant, hantera gissningen
+    if (isLetter && hasNotLost && isNotAlreadyGuessed) {
+        handleGuess(letter);
+    }
+});
