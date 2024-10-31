@@ -6,6 +6,33 @@ body {
     margin: 0;
     padding: 0;
 }
+
+#game-container {
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: rgba(234, 238, 0, 0.9);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+#word-display, #wrong-letters, #result {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+#wrong-letters {
+    color: #ff0000; 
+}
+
+h2{
+    font-size: 30px;
+    color: rgb(255, 231, 13);
+    letter-spacing: 5px;
+    text-shadow: 
+    0 0 5px rgb(226, 43, 43)
+}
+
 :where(.game-modal) button {
     color: #fff;
     border: none;
@@ -68,55 +95,4 @@ body {
 }
 .game-modal button {
     padding: 12px 23px;
-}
-
-
-#game-container {
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 15px;
-    background-color: rgba(234, 238, 0, 0.9);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    width: 300px;
-}
-
-
-#word-display, #wrong-letters, #result {
-    font-size: 20px;
-    margin: 10px 0;
-}
-
-
-button {
-    padding: 10px 20px;
-    margin-top: 20px;
-    cursor: pointer;
-    background-color: #000000;
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    transition: background-color 0.3s, transform 0.3s;
-    display: grid;
-    justify-self: center;
-    position: relative;
-    left: 9rem;
-    
-}
-
-button:hover {
-    background-color: #32ff04;
-    transform: translateY(-2px);
-}
-
-#wrong-letters {
-    color: #ff0000; 
-}
-
-h2{
-    font-size: 30px;
-    color: rgb(255, 231, 13);
-    letter-spacing: 5px;
-    text-shadow: 
-    0 0 5px rgb(226, 43, 43)
 }
